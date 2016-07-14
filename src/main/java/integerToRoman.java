@@ -12,7 +12,7 @@ public class integerToRoman {
     public static String intToRoman(int num){
         //数字范围是到3999,所以千位写到3000
         String[][] dict={{"","I","II","III","IV","V","VI","VII","VIII","IX"},
-                         {"","X","XX","XXX","IL","L","LX","LXX","LXXX","XC"},
+                         {"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"},
                          {"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"},
                          {"","M","MM","MMM"}
                         };
