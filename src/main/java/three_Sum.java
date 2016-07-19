@@ -57,7 +57,9 @@ public class three_Sum {
                 while(left<right&&(nums[right]==nums[right-1])) right--;
                 left++;
                 right--;
-            }else if(nums[left]+nums[right]+target<0){
+            }
+            //***注意这里*****
+            else if(nums[left]+nums[right]+target<0){
                 left++;
             }else{
                 right--;
