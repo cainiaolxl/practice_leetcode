@@ -2,9 +2,6 @@ package main.java;
 
 /**
  * Created by lxl on 16/8/20.
- *
- * 本题要点：
- *
  */
 import java.util.List;
 import java.util.ArrayList;
@@ -21,11 +18,14 @@ public class four_Sum {
         Arrays.sort(nums);
 
         for(int i=nums.length-1;i>2;i--) {
-            List<List<Integer>> curRes = threeSum(nums, i - 1, target - nums[i]);
-            for (int j = 0; j < curRes.size(); ++j) {
-                curRes.get(j).add(nums[i]);
+            //第一个数字必须进入,并且之后注意判断是否和上一个数字吻合
+            if(i==nums.length-1||nums[i]!=nums[i+1]) {
+                List<List<Integer>> curRes = threeSum(nums, i - 1, target - nums[i]);
+                for (int j = 0; j < curRes.size(); ++j) {
+                    curRes.get(j).add(nums[i]);
+                }
+                res.addAll(curRes);
             }
-            res.addAll(curRes);
         }
         return res;
 
@@ -35,6 +35,7 @@ public class four_Sum {
     public static List<List<Integer>> threeSum(int[] nums,int index,int target){
         List<List<Integer>> Res = new ArrayList<List<Integer>>();
         for(int i=index;i>1;--i){
+            //第一个数字必须进入判断,并且之后判断是否和上一个数字相同以去重
             if(i==index||nums[i]!=nums[i+1]){
                 List<List<Integer>> curRes = twoSum(nums,i-1,target-nums[i]);
                 for(int j=0;j<curRes.size();++j){
@@ -53,9 +54,11 @@ public class four_Sum {
         int r=rear;
         while(l<r){
             if((nums[l]+nums[r])==target){
+                //临时开辟一个数组存储符合的数字
                 List<Integer> localR = new ArrayList<Integer>();
                 localR.add(nums[l]);
                 localR.add(nums[r]);
+                //将符合条件的数组加入多维数组中
                 res.add(localR);
                 l++;
                 r--;
@@ -74,9 +77,10 @@ public class four_Sum {
     }
 
     public static void main(String[] args){
-        int[] nums={1,0,-1,0,-2,2};
-        int target=0;
+        int[] nums={5,5,3,5,1,-5,1,-2};
+        int target=4;
         List<List<Integer>> res = fourSum(nums,target);
+        System.out.println(res.size());
         for(List<Integer> item:res){
             for(Integer i:item){
                 System.out.print(i+" ");
