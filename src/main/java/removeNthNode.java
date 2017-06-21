@@ -25,10 +25,6 @@ public class removeNthNode {
             System.out.print(result.value+" ");
             result =result.next;
         }
-
-
-
-
     }
 
 
