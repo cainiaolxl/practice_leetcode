@@ -2,6 +2,9 @@ package main.java;
 
 /**
  * Created by lxl on 17/8/9.
+ * 本题要点:
+ *    1、注意l1或者l2为空的情况
+ *    2、注意这题重复的情况,需要把重复的情况考虑进去
  */
 
 class ListNode2{
